@@ -4,11 +4,9 @@
 	"scripts": {
 		"build": "parcel build extension/manifest.json --experimental-scope-hoisting --no-cache --no-source-maps --no-minify && babel dist -d dist --no-comments",
 		"lint": "xo",
-		"release": "run-s build update-version upload:*",
+		"release:chrome": "cd distribution && webstore upload --auto-publish",
+		"release:firefox": "cd distribution && web-ext-submit",
 		"test": "run-p lint build",
-		"upload:amo": "cd dist && webext submit",
-		"upload:cws": "cd dist && webstore upload --auto-publish",
-		"version": "dot-json --indent=2 dist/manifest.json version",
 		"watch": "parcel watch extension/manifest.json --no-cache --no-hmr"
 	},
 	"browserslist": [
@@ -16,11 +14,11 @@
 		"last 1 Firefox version"
 	],
 	"xo": {
-		"extends": "xo-react",
 		"envs": [
 			"browser",
 			"webextensions"
 		],
+		"extends": "xo-react",
 		"ignores": [
 			"extension/webext-options-sync.js"
 		],
