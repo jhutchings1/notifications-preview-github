@@ -45,7 +45,7 @@ jobs:
       - run: npm run build
       - name: Update extension’s meta
         run: >-
-          npx dot-json dist/manifest.json version ${{
+          npx dot-json distribution/manifest.json version ${{
           needs.Version.outputs.version }}
       - run: 'npm run release:${{ matrix.command }}'
         env:
