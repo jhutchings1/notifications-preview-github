@@ -2,12 +2,12 @@
 	"repository": "tanmayrajani/notifications-preview-github",
 	"license": "MIT",
 	"scripts": {
-		"build": "parcel build extension/manifest.json --experimental-scope-hoisting --no-cache --no-source-maps --no-minify && babel dist -d dist --no-comments",
+		"build": "parcel build extension/manifest.json --experimental-scope-hoisting --no-cache --no-source-maps --no-minify --out-dir distribution && babel distribution -d distribution --no-comments",
 		"lint": "xo",
 		"release:chrome": "cd distribution && webstore upload --auto-publish",
 		"release:firefox": "cd distribution && web-ext-submit",
 		"test": "run-p lint build",
-		"watch": "parcel watch extension/manifest.json --no-cache --no-hmr"
+		"watch": "parcel watch extension/manifest.json --no-cache --no-hmr --out-dir distribution"
 	},
 	"browserslist": [
 		"last 1 Chrome version",
