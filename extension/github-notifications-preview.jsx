@@ -66,6 +66,7 @@ async function updateUnreadCount() {
 	for (const statusElement of select.all('.notification-indicator .mail-status')) {
 		if (options.previewCount && statusElement.textContent !== latestCount) {
 			statusElement.textContent = Number(latestCount) + rghCount || ''; // Don't show 0
+			navigator.setAppBadge(latestCount).catch((error) => { console.log("App badge couldn't be updated")} );
 		}
 
 		statusElement.classList.toggle('unread', rghCount || latestStatusElement.classList.contains('unread'));
